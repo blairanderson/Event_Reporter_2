@@ -1,0 +1,6 @@
+gem 'minitest'
+require 'minitest/autorun'
+require 'minitest/pride'
+require './lib/registry'
+require './lib/attendee_parser'
+require './lib/attendee'
