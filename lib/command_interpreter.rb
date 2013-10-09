@@ -55,27 +55,9 @@ class CommandInterpreter
   end
 
   def run_find(parts)
-    attribute = parts[1]
-
-    case parts.first
-      when "first_name"
-        runner.find_first_name(attribute)
-      when "last_name"
-        runner.find_last_name(attribute)
-      when "email"
-        runner.find_email(attribute)
-      when "zipcode"
-        runner.find_zipcode(attribute)
-      when "city"
-        runner.find_city(attribute)
-      when "state"
-        runner.find_state(attribute)
-      when "address"
-        address = parts[1..-1].join(' ')
-        runner.find_address(address)
-      when "home_phone"
-        runner.find_home_phone(attribute)
-    end
+    command = parts.shift
+    query = parts.join(' ')
+    runner.send("find_#{command}", query)
   end
 
 end
