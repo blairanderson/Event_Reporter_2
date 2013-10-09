@@ -12,7 +12,7 @@ class Attendee
     @first_name = data[:first_name]
     @last_name  = data[:last_name]
     @email      = data[:email]
-    @home_phone = formatted_phone(data[:home_phone])
+    @home_phone = clean_home_phone_number(data[:home_phone])
     @street     = data[:street]
     @city       = data[:city]
     @state      = data[:state]
@@ -41,13 +41,13 @@ class Attendee
       end
   end
 
-  def formatted_phone(non_formatted_homephones)
-    cleaned_phone_numbers    = clean_home_phone_number(non_formatted_homephones)
-    home_phone_number_digits = cleaned_phone_numbers.to_s.split('')
-    home_phone_area_code     = home_phone_number_digits[0..2].join
-    home_phone_prefix        = home_phone_number_digits[3..5].join
-    home_phone_suffix        = home_phone_number_digits[6..9].join
-    formatted_phone          = "(#{home_phone_area_code}) #{home_phone_prefix}-#{home_phone_suffix}"
-  end
+  # def formatted_phone(non_formatted_homephones)
+  #   cleaned_phone_numbers    = clean_home_phone_number(non_formatted_homephones)
+  #   home_phone_number_digits = cleaned_phone_numbers.to_s.split('')
+  #   home_phone_area_code     = home_phone_number_digits[0..2].join
+  #   home_phone_prefix        = home_phone_number_digits[3..5].join
+  #   home_phone_suffix        = home_phone_number_digits[6..9].join
+  #   formatted_phone          = "(#{home_phone_area_code}) #{home_phone_prefix}-#{home_phone_suffix}"
+  # end
 
 end

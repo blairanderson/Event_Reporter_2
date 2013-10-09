@@ -1,9 +1,9 @@
 require './test/test_helper'
 
-class FormattingPhoneAndZipcodeTest < Minitest::Test 
+class FormattingPhoneAndZipcodeTest < Minitest::Test
 
   def test_a_3_digit_zipcode_is_invalid
-    attendee = [ 
+    attendee = [
       Attendee.new(zipcode: "342")
     ]
 
@@ -12,7 +12,7 @@ class FormattingPhoneAndZipcodeTest < Minitest::Test
   end
 
   def test_a_4_digit_zipcode_adds_a_0_at_the_beginning
-    attendee = [ 
+    attendee = [
       Attendee.new(zipcode: "1234")
     ]
 
@@ -26,7 +26,7 @@ class FormattingPhoneAndZipcodeTest < Minitest::Test
     ]
 
     assert_equal 1, attendee.count
-    assert_equal "(000) 000-0000", attendee.first.home_phone
+    assert_equal "0000000000", attendee.first.home_phone
   end
 
   def test_a_11_digit_number_is_invalid
@@ -35,7 +35,7 @@ class FormattingPhoneAndZipcodeTest < Minitest::Test
     ]
 
     assert_equal 1, attendee.count
-    assert_equal "(000) 000-0000", attendee.first.home_phone
+    assert_equal "0000000000", attendee.first.home_phone
   end
 
   def test_a_north_american_number_is_valid_with_the_prefix
@@ -44,7 +44,7 @@ class FormattingPhoneAndZipcodeTest < Minitest::Test
     ]
 
     assert_equal 1, attendee.count
-    assert_equal "(123) 456-7890", attendee.first.home_phone
+    assert_equal "1234567890", attendee.first.home_phone
   end
 
   def test_numbers_get_cleaned_up
@@ -57,7 +57,7 @@ class FormattingPhoneAndZipcodeTest < Minitest::Test
     ]
 
     assert_equal 1, attendee.count
-    assert_equal "(123) 456-7890", attendee.first.home_phone
+    assert_equal "1234567890", attendee.first.home_phone
   end
 
 end

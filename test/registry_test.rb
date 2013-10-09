@@ -1,6 +1,6 @@
 require './test/test_helper'
 
-class RegistryTest < Minitest::Test 
+class RegistryTest < Minitest::Test
   attr_reader :registry
 
   def setup
@@ -43,16 +43,16 @@ class RegistryTest < Minitest::Test
 
   def test_it_finds_attendees_by_homephone_irrespective_of_format
     registry.attendees = [
-      Attendee.new(home_phone: "(615) 438-5000"),
-      Attendee.new(home_phone: "(414) 520-5000"),
+      Attendee.new(home_phone: "615.438.5000"),
+      Attendee.new(home_phone: "414-520-5000"),
       Attendee.new(home_phone: "(941) 979-2000")
     ]
 
-    attendees = registry.find_all_by_home_phone("(615) 438-5000")
+    attendees = registry.find_all_by_home_phone("6154385000")
 
     assert_equal 1, attendees.count
     attendees.each do |attendee|
-      assert_equal "(615) 438-5000", attendee.home_phone
+      assert_equal "6154385000", attendee.home_phone
     end
   end
 

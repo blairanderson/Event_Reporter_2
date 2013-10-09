@@ -20,7 +20,7 @@ class AttendeeParserTest < Minitest::Test
     assert_equal "Allison", attendee.first_name
     assert_equal "Nguyen", attendee.last_name
     assert_equal "arannon@jumpstartlab.com", attendee.email
-    assert_equal "(615) 438-5000", attendee.home_phone
+    assert_equal "6154385000", attendee.home_phone
     assert_equal "3155 19th St NW", attendee.street
     assert_equal "Washington", attendee.city
     assert_equal "DC", attendee.state
